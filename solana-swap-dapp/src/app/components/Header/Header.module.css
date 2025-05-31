@@ -1,0 +1,111 @@
+/* src/app/components/Header/Header.module.css */
+.appHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem; /* 上下のパディングを少し調整も可 */
+    background-color: rgba(0, 0, 0, 0.85); /* ページ本体の背景と調和する黒ベース、少し透明に */
+    backdrop-filter: blur(10px); /* page.module.css の .feature のようなブラー効果 */
+    border-bottom: 1px solid rgba(255, 0, 0, 0.4); /* page.module.css の赤アクセントを参考に */
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* heroセクションのz-indexより高く設定 */
+    color: #ffffff;
+  }
+  
+  .logoContainer {
+    /* 特筆すべきスタイルなし */
+  }
+  
+  .logoLink {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.5rem; /* ヘッダーに合わせて少し調整も可 */
+    font-weight: 900; /* page.module.css の .logo と同様 */
+    text-transform: uppercase; /* page.module.css の .logo と同様 */
+    letter-spacing: -0.05em; /* page.module.css の .logo と同様 */
+  }
+  
+  .logoText {
+    color: #ffffff; /* page.module.css の .logoText と同様 */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4); /* page.module.css の .logoText の影を少し抑えめに */
+  }
+  
+  .logoAccent {
+    color: #ff0000; /* page.module.css の .logoAccent と同様 */
+    text-shadow: 
+      0 0 15px rgba(255, 0, 0, 0.7), /* page.module.css の .logoAccent の影を少し抑えめに */
+      0 0 30px rgba(255, 0, 0, 0.3);
+    margin-left: 4px; /* page.module.css の .logoAccent と同様 */
+  }
+  
+  .navLinks {
+    display: flex;
+    gap: 1.8rem; /* リンク間のスペース */
+  }
+  
+  .link {
+    text-decoration: none;
+    color: #cccccc; /* page.module.css の .tagline や .feature p の色を参考に */
+    font-weight: 500;
+    letter-spacing: 0.05em; /* 少し文字間隔を広げる */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+  }
+  
+  .link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.6); /* ホバー時に赤いグロー */
+  }
+  
+  .walletButtonSection {
+    /* 配置調整用コンテナ */
+  }
+  
+  /* WalletMultiButton を page.module.css の .enterButton のスタイルに近づける */
+  .walletButtonSection :global(.wallet-adapter-button-trigger) {
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #cc0000,
+      #ff0000
+    ) !important;
+    background-size: 200% 200% !important; /* .enterButton のアニメーション用 */
+    color: white !important;
+    padding: 0.8rem 1.8rem !important; /* .enterButton のpaddingに近づける */
+    border-radius: 50px !important; /* .enterButton と同様の丸み */
+    font-size: 0.9rem !important; /* ヘッダー内なので少し小さめに */
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    transition: all 0.3s ease !important;
+    border: 1px solid transparent !important; /* 初期状態ではボーダーなし、ホバーで追加も可 */
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3) !important; /* 初期状態で控えめなグロー */
+  }
+  
+  .walletButtonSection :global(.wallet-adapter-button-trigger:hover) {
+    transform: translateY(-3px) scale(1.03) !important; /* .enterButton のホバー効果を参考に */
+    box-shadow: 
+      0 15px 30px rgba(255, 0, 0, 0.3), /* .enterButton のホバーシャドウを参考に */
+      0 0 40px rgba(255, 0, 0, 0.2) !important;
+    /* .enterButton と同じアニメーションを適用する場合 */
+    /* animation: buttonGlow 2s ease-in-out infinite alternate !important; */
+  }
+  
+  /* もし .enterButton の buttonGlow アニメーションをウォレットボタンにも適用したい場合、
+    @keyframes buttonGlow を globals.css に定義するか、
+    この Header.module.css 内に再度定義する必要があります。
+    page.module.css の @keyframes buttonGlow は以下のようになっています:
+  */
+  /*
+  @keyframes buttonGlow {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+  */

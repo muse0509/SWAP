@@ -1,0 +1,166 @@
+/* components/SwapForm/SwapForm.module.css */
+.swapFormContainer {
+  /* page.module.css の .feature のようなスタイルを参考に */
+  background: linear-gradient(
+    145deg,
+    rgba(255, 0, 0, 0.05), /* 赤の要素を少し抑えめに */
+    rgba(10, 10, 20, 0.9) /* 暗めの背景 */
+  );
+  padding: 25px; /* 少し広めに */
+  border-radius: 16px; /* page.module.css の .feature と同様 */
+  border: 1px solid rgba(255, 0, 0, 0.3); /* page.module.css の .feature と同様 */
+  box-shadow: 
+    0 10px 30px rgba(255, 0, 0, 0.15), /* page.module.css の .feature:hover のような影 */
+    inset 0 0 15px rgba(255, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  max-width: 480px; /* 少し広めに */
+  margin: 30px auto;
+  font-family: sans-serif; /* プロジェクト全体でフォント指定があればそれに合わせる */
+  color: #e0e0e0; /* デフォルトの文字色を明るいグレーに */
+}
+
+.swapFormContainer h2 {
+  text-align: center;
+  color: #ffffff; /* 白 */
+  margin-bottom: 25px;
+  font-size: 1.8rem; /* 少し大きめに */
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* 赤いテキストシャドウ */
+}
+
+.walletButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* WalletMultiButtonのスタイルはHeader.module.cssでグローバルに設定したものを継承または調整 */
+/* 必要であれば、このフォーム専用のさらに細かい調整をここに追加 */
+/* 例: .walletButtonContainer :global(.wallet-adapter-button-trigger) { width: 100%; } */
+
+
+.walletInfo {
+  font-size: 0.9em;
+  color: #cccccc; /* page.module.css の .tagline のような色 */
+  text-align: center;
+  margin-bottom: 20px;
+  word-break: break-all;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 0, 0, 0.2);
+}
+
+.formGroup {
+  margin-bottom: 20px; /* 少し広めに */
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 8px; /* 少し広めに */
+  color: #cccccc; /* page.module.css の .tagline のような色 */
+  font-weight: 500; /* 少し太く */
+  font-size: 0.95rem;
+}
+
+.tokenInputGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tokenSelect,
+.amountInput {
+  padding: 12px 15px; /* パディング調整 */
+  border: 1px solid rgba(255, 0, 0, 0.4); /* 赤系のボーダー */
+  border-radius: 8px; /* 少し丸みを強く */
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.3); /* 暗めの背景 */
+  color: #ffffff; /* 白い文字 */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tokenSelect:focus,
+.amountInput:focus {
+  outline: none;
+  border-color: rgba(255, 0, 0, 0.7); /* フォーカス時にボーダー色を濃く */
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); /* フォーカス時に赤いグロー */
+}
+
+.tokenSelect {
+  flex-grow: 1;
+}
+
+.amountInput {
+  width: 130px; /* Amount input幅調整 */
+  text-align: right;
+}
+
+/* Placeholder text color for inputs */
+.amountInput::placeholder {
+  color: #888888; /* page.module.css の .disclaimer のような色 */
+}
+
+
+.tokenLogo {
+  width: 28px; /* 少し大きく */
+  height: 28px; /* 少し大きく */
+  margin-left: 10px;
+  vertical-align: middle;
+  border-radius: 50%; /* ロゴを円形に */
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.2); /* ロゴに軽い影 */
+}
+
+.swapIconContainer {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+  font-size: 1.8em; /* 少し大きく */
+  color: #ff0000; /* 赤色 */
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.swapIconContainer:hover {
+    transform: rotate(180deg) scale(1.1); /* ホバーで回転と拡大 */
+}
+
+.swapButton {
+  display: block;
+  width: 100%;
+  padding: 15px; /* パディング調整 */
+  /* page.module.css の .enterButton のような背景 */
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #cc0000,
+    #ff0000
+  );
+  background-size: 200% 200%;
+  color: white;
+  border: none; /* もしくは 1px solid rgba(255,0,0,0.6) */
+  border-radius: 50px; /* .enterButton のような丸み */
+  font-size: 1.2em; /* 少し大きめに */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3); /* 初期状態で控えめなグロー */
+}
+
+.swapButton:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.02); /* page.module.css の .enterButton のホバー効果 */
+  box-shadow: 
+    0 15px 30px rgba(255, 0, 0, 0.4),
+    0 0 40px rgba(255, 0, 0, 0.3);
+  /* animation: buttonGlow 2s ease-in-out infinite alternate; (page.module.css のキーフレームを再利用する場合) */
+}
+
+.swapButton:disabled {
+  background: rgba(100, 0, 0, 0.5); /* 暗めの赤、無効状態 */
+  color: #888888; /* page.module.css の .disclaimer のような色 */
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}

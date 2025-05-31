@@ -1,168 +1,343 @@
-.page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
-  font-family: var(--font-geist-sans);
-}
-
-@media (prefers-color-scheme: dark) {
-  .page {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-  }
-}
-
+/* src/app/page.module.css */
 .main {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
-}
-
-.main ol {
-  font-family: var(--font-geist-mono);
-  padding-left: 0;
-  margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-  list-style-position: inside;
-}
-
-.main li:not(:last-of-type) {
-  margin-bottom: 8px;
-}
-
-.main code {
-  font-family: inherit;
-  background: var(--gray-alpha-100);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.ctas {
-  display: flex;
-  gap: 16px;
-}
-
-.ctas a {
-  appearance: none;
-  border-radius: 128px;
-  height: 48px;
-  padding: 0 20px;
-  border: none;
-  border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-  cursor: pointer;
+  min-height: 100vh;
+  background: #000000;
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
 }
 
-a.primary {
-  background: var(--foreground);
-  color: var(--background);
-  gap: 8px;
+.hero {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  z-index: 10;
 }
 
-a.secondary {
-  border-color: var(--gray-alpha-200);
-  min-width: 158px;
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
 }
 
-.footer {
-  grid-row-start: 3;
-  display: flex;
-  gap: 24px;
+.grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
 }
 
-.footer a {
-  display: flex;
+.glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 0, 0.3) 0%,
+    rgba(255, 0, 0, 0.1) 30%,
+    transparent 70%
+  );
+  animation: pulse 4s ease-in-out infinite alternate;
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: white;
+}
+
+.logoSection {
+  margin-bottom: 4rem;
+}
+
+.logo {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  margin: 0;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+}
+
+.logoText {
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.logoAccent {
+  color: #ff0000;
+  text-shadow: 
+    0 0 20px rgba(255, 0, 0, 0.8),
+    0 0 40px rgba(255, 0, 0, 0.4);
+}
+
+.tagline {
+  font-size: 1.5rem;
+  color: #cccccc;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 4rem 0;
+}
+
+.feature {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.8)
+  );
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-10px);
+  border-color: rgba(255, 0, 0, 0.6);
+  box-shadow: 
+    0 20px 40px rgba(255, 0, 0, 0.2),
+    inset 0 0 20px rgba(255, 0, 0, 0.1);
+}
+
+.featureIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  filter: grayscale(1) brightness(2);
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.feature p {
+  color: #cccccc;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin: 4rem 0;
+}
+
+.stat {
+  text-align: center;
+}
+
+.statNumber {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #ff0000;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+}
+
+.statLabel {
+  color: #cccccc;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.cta {
+  margin-top: 4rem;
+}
+
+.enterButton {
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 1rem;
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #cc0000,
+    #ff0000
+  );
+  background-size: 200% 200%;
+  color: white;
+  padding: 1.5rem 3rem;
+  border-radius: 50px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1rem;
 }
 
-.footer img {
-  flex-shrink: 0;
+.enterButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
+.enterButton:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 
+    0 20px 40px rgba(255, 0, 0, 0.4),
+    0 0 60px rgba(255, 0, 0, 0.3);
+  animation: buttonGlow 2s ease-in-out infinite alternate;
+}
 
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
+.enterButton:hover::before {
+  left: 100%;
+}
 
-  .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
+.buttonText {
+  position: relative;
+  z-index: 2;
+}
+
+.buttonArrow {
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.enterButton:hover .buttonArrow {
+  transform: translateX(10px);
+}
+
+.disclaimer {
+  color: #888888;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #ff0000;
+  border-radius: 50%;
+  animation: float linear infinite;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
   }
 }
 
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
   }
-
-  .main {
-    align-items: center;
-  }
-
-  .main ol {
-    text-align: center;
-  }
-
-  .ctas {
-    flex-direction: column;
-  }
-
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
-  }
-
-  a.secondary {
-    min-width: auto;
-  }
-
-  .footer {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.1;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
+@keyframes buttonGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(50px);
+    opacity: 0;
+  }
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  .hero {
+    padding: 1rem;
+  }
+  
+  .features {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  .feature {
+    padding: 1.5rem;
+  }
+  
+  .enterButton {
+    padding: 1.2rem 2rem;
+    font-size: 1.2rem;
+  }
+  
+  .statNumber {
+    font-size: 2rem;
   }
 }
